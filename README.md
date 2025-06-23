@@ -1,33 +1,50 @@
 # Taxi Orders Monorepo
 
-This repository contains a simple taxi orders application with a Laravel backend and a React + Typescript frontend. The services are orchestrated with `docker-compose`.
+This repository contains a simple taxi orders application with a Laravel backend and a React + Typescript frontend.
 
 ## Requirements
-- Docker
-- docker-compose
+
+### Backend
+- PHP >= 8.1
+- Composer
+
+### Frontend
+- Node.js >= 18
 
 ## Usage
 
+### Backend
 1. Copy example environment variables:
    ```bash
    cp backend/.env.example backend/.env
    ```
-2. Build and start the services:
+2. Install PHP dependencies and run the app:
    ```bash
-   docker-compose up --build
+   cd backend
+   composer install
+   php artisan migrate
+   php artisan serve --host=127.0.0.1 --port=8000
    ```
-3. Backend will be available on `http://localhost:8000`, frontend on `http://localhost:3000`.
+   The backend will be available on `http://localhost:8000`.
 
-The frontend communicates with the backend via `http://backend:8000/api` inside the Docker network.
+### Frontend
+1. Install npm dependencies and start the dev server:
+   ```bash
+   cd frontend
+   npm install
+   npm run dev
+   ```
+   The frontend will run on `http://localhost:3000` and proxy API requests to `http://localhost:8000`.
 
 ## Structure
 - `backend/` – Laravel application
-  - `Dockerfile` – builds the PHP-FPM container
+  - `artisan` – CLI entrypoint
   - `composer.json` – project dependencies
-  - `database/migrations/` – includes an example migration for the `orders` table
- - `frontend/` – React application powered by **Vite**
-  - `Dockerfile` – dev server image
+  - `database/migrations/` – example migration for the `orders` table
+- `frontend/` – React application powered by **Vite**
+  - `index.html` – HTML entry point
   - `package.json` – npm dependencies and scripts
+  - `vite.config.ts` – development server configuration
 
 ## Migration Example
 The migration `database/migrations/2023_01_01_000000_create_orders_table.php` creates the `orders` table with fields for addresses, coordinates, phone number and status.
