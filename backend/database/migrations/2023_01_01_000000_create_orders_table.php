@@ -13,14 +13,14 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->string('passenger_phone');
             $table->string('from_address');
-            $table->decimal('from_latitude', 10, 7);
-            $table->decimal('from_longitude', 10, 7);
+            $table->decimal('from_lat', 10, 7);
+            $table->decimal('from_lng', 10, 7);
             $table->string('from_description')->nullable();
             $table->string('to_address');
-            $table->decimal('to_latitude', 10, 7);
-            $table->decimal('to_longitude', 10, 7);
+            $table->decimal('to_lat', 10, 7);
+            $table->decimal('to_lng', 10, 7);
             $table->string('to_description')->nullable();
-            $table->enum('status', ['new', 'in_progress', 'canceled', 'completed'])->default('new');
+            $table->enum('status', ['new', 'driving', 'canceled', 'completed'])->default('new');
         });
     }
 
