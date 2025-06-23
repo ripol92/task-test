@@ -2,10 +2,10 @@ FROM node:18
 
 WORKDIR /app
 
-COPY package.json tsconfig.json ./
+COPY package.json tsconfig.json vite.config.ts index.html ./
 RUN npm install
-COPY . ./
+COPY src ./src
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
 
 EXPOSE 3000

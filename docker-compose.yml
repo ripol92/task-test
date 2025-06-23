@@ -24,7 +24,7 @@ services:
   frontend:
     build: ./frontend
     environment:
-      - REACT_APP_API_URL=http://backend:8000/api
+      - VITE_API_URL=http://backend:8000/api
     depends_on:
       - backend
     ports:
