@@ -4,7 +4,10 @@
   "private": true,
   "dependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.4.0",
+    "react-window": "^1.8.6",
+    "react-virtualized-auto-sizer": "^1.0.7"
   },
   "devDependencies": {
     "typescript": "^5.0.0"
