@@ -25,7 +25,7 @@ The frontend communicates with the backend via `http://backend:8000/api` inside 
   - `Dockerfile` – builds the PHP-FPM container
   - `composer.json` – project dependencies
   - `database/migrations/` – includes an example migration for the `orders` table
-- `frontend/` – React application
+ - `frontend/` – React application powered by **Vite**
   - `Dockerfile` – dev server image
   - `package.json` – npm dependencies and scripts
 
